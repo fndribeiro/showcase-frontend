@@ -1,7 +1,15 @@
 export default function ArrowDown() {
+
+  function scrollIntoView(): void {
+    document
+      .getElementById("home-presentation")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <svg
-      className="h-20 w-20 animate-bounce"
+      onClick={scrollIntoView}
+      className="h-20 w-20 animate-bounce cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
