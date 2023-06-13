@@ -1,13 +1,21 @@
-export default function ArrowUp() {
+import ArrowProps from "@/domain/entities/utils/arrow-props";
+
+export default function ArrowUp({ scrollIntoId }: ArrowProps) {
+
+  function scrollIntoView(): void {
+    document
+      .getElementById(scrollIntoId)
+      ?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <svg
-      className="h-20 w-20 animate-bounce cursor-pointer"
-      viewBox="0 0 24 24"
+      onClick={scrollIntoView}
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 384 512"
+      className="h-10 w-10 animate-bounce cursor-pointer"
     >
-      <g id="Layer_1">
-        <path d="M13,5.586l-4.707,4.707c-0.391,0.391-0.391,1.023,0,1.414s1.023,0.391,1.414,0L12,9.414V17c0,0.552,0.447,1,1,1   s1-0.448,1-1V9.414l2.293,2.293C16.488,11.902,16.744,12,17,12s0.512-0.098,0.707-0.293c0.391-0.391,0.391-1.023,0-1.414L13,5.586z   " />
-      </g>
+      <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
     </svg>
   );
 }

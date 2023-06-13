@@ -3,7 +3,7 @@ import HomeTitle from "@/components/home/home-title";
 
 export default function Home() {
   return (
-    <div>
+    <div id="home">
       <HomeTitle/>
       <HomePresentation/>
     </div>
