@@ -11,8 +11,8 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'home-title': "url('../resources/images/home-background-1.jpg')",
-        'home-presentation': "url('../resources/images/home-background-2.jpg')",
+        'land-page-title': "url('../resources/images/land-page-background-1.jpg')",
+        'land-page-dev-presentation': "url('../resources/images/land-page-background-2.jpg')",
       },
     },
   },

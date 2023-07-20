@@ -4,19 +4,19 @@ import ArrowDown from "../utils/arrow-down";
 import ArrowUp from "../utils/arrow-up";
 import Card from "../utils/card";
 
-export default function HomePresentation() {
+export default function LandPageDevPresentation() {
 
   const cardPresentationBody: string[] = [
     "Im a web application developer with 2+ years of experience currently working at IBM.",
-    "Im very good as a Java Spring Boot backend developer and I do my best at frontend with React."
+    "Im very good as a Java Spring Boot backend developer and Im building this project to improve my frontend skills."
   ]
 
   return (
-    <div id="home-presentation">
+    <div id="land-page-dev-presentation">
       <div className="flex flex-col items-center justify-evenly h-screen">
-        <ArrowUp scrollIntoId="home" />
+        <ArrowUp scrollIntoId="land-page" />
         <Card header="Who Am I?" body={cardPresentationBody} />
-        <ArrowDown scrollIntoId="home-project-goal"/>
+        <ArrowDown scrollIntoId="land-page-project-goal"/>
       </div>
     </div>
   );

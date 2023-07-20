@@ -4,9 +4,9 @@ import profilePicture from "../../resources/images/profile.jpg";
 import Image from "next/image";
 import ArrowDown from "../utils/arrow-down";
 
-export default function HomeTitle() {
+export default function LandPageTitle() {
   return (
-    <div className="bg-home-title h-screen flex flex-col items-center justify-evenly">
+    <div className="bg-land-page-title h-screen flex flex-col items-center justify-evenly">
       <div>
         <div>
           <div className="flex">
@@ -23,7 +23,7 @@ export default function HomeTitle() {
           <p className="pl-2">and this is my web application features showcase!</p>
         </div>
       </div>
-      <ArrowDown scrollIntoId="home-presentation"/>
+      <ArrowDown scrollIntoId="land-page-dev-presentation"/>
     </div>
   );
 }
