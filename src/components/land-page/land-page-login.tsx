@@ -14,7 +14,7 @@ export default function LandPageLogin() {
             <span className="pb-20">
                 <ArrowUp scrollIntoId="land-page-project-goal" />
             </span>
-            <p className="pb-5 text-2xl font-bold">Sign in if you want to know more</p>
+            <p className="pb-5 text-2xl font-bold">Sign in to access more features</p>
             <GoogleButton
                 onClick={() => { router.push(process.env.SHOWCASE_BACKEND_BASE_URL!) }}
             />

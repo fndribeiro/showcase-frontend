@@ -1,5 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 
+import localStorageService from "@/ports/services/local-storage-service";
+
 class ShowcaseBackendService {
 
   private axiosInstance: AxiosInstance;
@@ -23,8 +25,7 @@ class ShowcaseBackendService {
         .interceptors
         .request.
         use((request: any) => {
-            const token = localStorage.getItem('token');
-            request.headers.Authorization = `Bearer ${token}`;
+            request.headers.Authorization = `Bearer ${localStorageService.getToken()}`;
             return request;
         });
 
@@ -34,7 +35,7 @@ class ShowcaseBackendService {
         .response
         .use((response: AxiosResponse<any, any>) => {
             if (response.status === 401) {
-                // Handle unauthorized response if needed
+              localStorageService.removeToken();
             }
             return response;
         },

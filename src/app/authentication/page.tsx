@@ -3,8 +3,7 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-import { showcaseBackendService } from "@/ports/services/showcase-backend-service";
-import User from "@/domain/entities/users/user";
+import localStorageService from "@/ports/services/local-storage-service";
 
 export default function Authentication(): void {
 
@@ -16,16 +15,10 @@ export default function Authentication(): void {
 
         const token = searchParams.get('token');
 
-        localStorage.setItem('token', token || '');
-
-        showcaseBackendService
-            .get<User>('/user')
-            .then(response => {
-                response.data; // create new user in redux state
-            });
+        localStorageService.setToken(token || '');
 
         router.push('/home');
 
-    });
+    }, []);
     
 }
