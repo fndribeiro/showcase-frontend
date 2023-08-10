@@ -25,7 +25,7 @@ export default function HomePage() {
     showcaseBackendService
       .get<User>("/user")
       .then((response) => {
-        setUser(new User(response.data.name, response.data.email));
+          setUser(new User(response.data.name, response.data.email));
       })
       .catch((error) => {
         alert(error)
@@ -37,8 +37,8 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-100">
       <Header title={`Welcome ${user.name}`} />
       <main className="grid lg:grid-flow-col gap-10 auto-cols-max place-content-around">
-        <Button redirectTo="home/platinum-trophies" backgroundColor="purple-900" backgroundColorOnHover="purple-950" textContent="My Platinum Trophies"/>
-        <Button redirectTo="home/project-technical-specification" backgroundColor="orange-600" backgroundColorOnHover="orange-700" textContent="Project Technical Specification"/>
+        <Button redirectTo="home/platinum-trophies" textContent="My Platinum Trophies" className="bg-purple-900 hover:bg-purple-950 text-white font-bold 2xl:w-80 2xl:h-64 w-40 h-32 rounded-3xl shadow-2xl mt-16" />
+        <Button redirectTo="home/project-technical-specification" textContent="Project Technical Specification" className="bg-orange-600 hover:bg-orange-700 text-white font-bold 2xl:w-80 2xl:h-64 w-40 h-32 rounded-3xl shadow-2xl mt-16" />
       </main>
       <Footer/>
     </div>

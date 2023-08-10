@@ -2,17 +2,17 @@ import LandPageDevPresentation from "@/components/land-page/land-page-dev-presen
 import LandPageLogin from "@/components/land-page/land-page-login";
 import LandPageProjectGoal from "@/components/land-page/land-page-project-goal";
 import LandPageTitle from "@/components/land-page/land-page-title";
-
+import LoadingButton from "@/components/utils/loading-button";
 
 export default function LandPage() {
   return (
     <div id="land-page">
-      <LandPageTitle/>
+      <LandPageTitle />
       <div className="bg-land-page-dev-presentation">
-        <LandPageDevPresentation/>
-        <LandPageProjectGoal/>
+        <LandPageDevPresentation />
+        <LandPageProjectGoal />
       </div>
-      <LandPageLogin/>
+      <LandPageLogin />
     </div>
   );
 }

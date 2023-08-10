@@ -5,6 +5,7 @@ export default function ProjectTechnicalSpecification() {
     return (
         <div>
             <Header title="Project Technical Specification" />
+                <div>UNDER CONSTRUCTION!</div>
             <Footer/>
         </div>
     )
