@@ -11,36 +11,36 @@ import localStorageService from "@/ports/services/local-storage-service";
 import PlatinumTrophy from "@/domain/entities/platinum-trophies/platinum-trophy";
 import ArrowDown from "@/components/utils/arrow-down";
 import ArrowUp from "@/components/utils/arrow-up";
+import LoadingButton from "@/components/utils/loading-button";
 
 export default function PlatinumTrophies() {
   const sortingOptions = [
-    { param: "game", order: "asc", label: "by Game ASC" },
-    { param: "game", order: "desc", label: "by Game DESC" },
-    { param: "achievementDate", order: "asc", label: "by Date ASC" },
-    { param: "achievementDate", order: "desc", label: "by Date DESC" },
-    { param: "hoursPlayed", order: "asc", label: "by Hours Played ASC" },
-    { param: "hoursPlayed", order: "desc", label: "by Hours Played DESC" },
-    { param: "rating", order: "asc", label: "by Rating ASC" },
-    { param: "rating", order: "desc", label: "by Rating DESC" },
+    { param: "game", order: "asc", label: "by Game: A-Z" },
+    { param: "game", order: "desc", label: "by Game: Z-A" },
+    { param: "achievementDate", order: "asc", label: "by Date: oldest" },
+    { param: "achievementDate", order: "desc", label: "by Date: most recent" },
+    { param: "hoursPlayed", order: "asc", label: "by Hours Played: lowest" },
+    { param: "hoursPlayed", order: "desc", label: "by Hours Played: highest" },
+    { param: "rating", order: "asc", label: "by Rating: lowest" },
+    { param: "rating", order: "desc", label: "by Rating: highest" },
   ];
 
   const [platinumTrophies, setTrophies] = useState<PlatinumTrophy[]>([]);
-
   const [showOptions, setShowOptions] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const router = useRouter();
 
   function loadPlatinumTrophies(sortParam: string, sortDirection: string): void {
+
+    setIsLoading(true);
+
     showcaseBackendService
-      .get<PlatinumTrophy[]>(
-        `/platinum-trophies?sortBy=${sortParam}&direction=${sortDirection}`
-      )
-      .then((response) => {
-        setTrophies(response.data);
-      })
-      .catch((error) => {
-        alert(`Error: ${error.response.data.error}`);
-      });
+      .get<PlatinumTrophy[]>(`/platinum-trophies?sortBy=${sortParam}&direction=${sortDirection}`)
+      .then((response) => setTrophies(response.data))
+      .catch((error) => alert(`Error: ${error.response.data.error}`))
+      .finally(() => setIsLoading(false));
+
   }
 
   useEffect(() => {
@@ -61,10 +61,7 @@ export default function PlatinumTrophies() {
         <ArrowDown scrollIntoId={`platinum-trophy-${platinumTrophies.length - 1}`} />
       </div>
       <div className="fixed top-20 left-3 lg:left-1/4">
-        <button
-          onClick={() => setShowOptions(!showOptions)}
-          className="bg-gray-900 hover:bg-gray-950 text-white font-bold py-2 px-4 rounded-lg"
-        >
+        <button onClick={() => setShowOptions(!showOptions)} className="bg-gray-900 hover:bg-gray-950 text-white font-bold py-2 px-4 rounded-lg">
           Sort
         </button>
         {showOptions && (
@@ -83,17 +80,23 @@ export default function PlatinumTrophies() {
       </div>
       <div className="max-h-screen overflow-y-auto">
         <main className="flex flex-col items-center justify-evenly flex-grow-0 pb-16">
-          {platinumTrophies.map((trophy, index) => (
-            <PlatinumTrophyCard
-              key={index}
-              achievementDate={trophy.achievementDate}
-              game={trophy.game}
-              imageUrl={trophy.imageUrl}
-              index={index}
-              hoursPlayed={trophy.hoursPlayed}
-              rating={trophy.rating}
-            />
-          ))}
+          {isLoading ? (
+            <span className="h-screen flex items-center justify-center pb-32">
+              <LoadingButton label="Loading..." />
+            </span>
+          ) : (
+            platinumTrophies.map((trophy, index) => (
+              <PlatinumTrophyCard
+                key={index}
+                achievementDate={trophy.achievementDate}
+                game={trophy.game}
+                imageUrl={trophy.imageUrl}
+                index={index}
+                hoursPlayed={trophy.hoursPlayed}
+                rating={trophy.rating}
+              />
+            ))
+          )}
         </main>
       </div>
       <Footer />

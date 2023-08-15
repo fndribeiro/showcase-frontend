@@ -6,7 +6,7 @@ class ShowcaseBackendService {
 
   private axiosInstance: AxiosInstance;
 
-  constructor() {
+  constructor(withToken: boolean) {
     
     this.axiosInstance = axios.create({
         baseURL: process.env.SHOWCASE_BACKEND_BASE_URL,
@@ -15,17 +15,19 @@ class ShowcaseBackendService {
         },
     });
 
-    this.setupInterceptors();
+    this.setupInterceptors(withToken);
   }
 
-  private setupInterceptors() {
+  private setupInterceptors(withToken: boolean) {
 
     this
         .axiosInstance
         .interceptors
-        .request.
-        use((request: any) => {
-            request.headers.Authorization = `Bearer ${localStorageService.getToken()}`;
+        .request
+        .use((request: any) => {
+            if (withToken) {
+              request.headers.Authorization = `Bearer ${localStorageService.getToken()}`;
+            }
             return request;
         });
 
@@ -48,4 +50,5 @@ class ShowcaseBackendService {
   
 }
 
-export const showcaseBackendService = new ShowcaseBackendService().getAxiosInstance();
+export const showcaseBackendService = new ShowcaseBackendService(true).getAxiosInstance();
+export const showcaseBackendServiceNoToken = new ShowcaseBackendService(false).getAxiosInstance();
