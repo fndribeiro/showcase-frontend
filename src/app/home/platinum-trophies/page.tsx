@@ -38,7 +38,7 @@ export default function PlatinumTrophies() {
     showcaseBackendService
       .get<PlatinumTrophy[]>(`/platinum-trophies?sortBy=${sortParam}&direction=${sortDirection}`)
       .then((response) => setTrophies(response.data))
-      .catch((error) => alert(`Error: ${error.response.data.error}`))
+      .catch((error) => alert(`Error: ${error.response?.data.error}`))
       .finally(() => setIsLoading(false));
 
   }
@@ -102,4 +102,11 @@ export default function PlatinumTrophies() {
       <Footer />
     </div>
   );
+}
+
+// generate, store and serve server side page every 600 seconds
+export async function getStaticProps() {
+  return {
+    revalidate: 600
+  }
 }
