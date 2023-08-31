@@ -18,6 +18,12 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+If you whish to login, you will need a backend server up and running.
+
+The easiest way is to just use showcase-backend server deployed on Render.
+
+For this, just go to next.config.js file, replace "process.env.SHOWCASE_BACKEND_BASE_URL" with "https://showcase-backend-zojn.onrender.com/" and you are all set!
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -32,3 +38,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
