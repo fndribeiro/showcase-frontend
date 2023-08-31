@@ -20,6 +20,9 @@ export default function LandPageProjectGoal() {
         <Card
           header="What is this project?"
           body={cardProjectGoalBody}
+          cardClassName="rounded shadow-lg bg-sky-300"
+          listClassName="pb-3"
+          withDisc
         />
         <ArrowDown scrollIntoId="land-page-login" />
       </div>
