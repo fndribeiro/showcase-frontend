@@ -1,13 +1,11 @@
-import { useState } from "react";
-
 export default class User {
+   name: string;
+   email: string;
+   isAdmin: boolean;
 
-    name: string;
-    email: string;
-
-    constructor(name: string, email: string) {
-        this.name = name;
-        this.email = email;
-    }
-
+   constructor(name: string, email: string, isAdmin: boolean) {
+      this.name = name;
+      this.email = email;
+      this.isAdmin = isAdmin;
+   }
 }

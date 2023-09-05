@@ -103,10 +103,3 @@ export default function PlatinumTrophies() {
     </div>
   );
 }
-
-// generate, store and serve server side page every 600 seconds
-export async function getStaticProps() {
-  return {
-    revalidate: 600
-  }
-}
